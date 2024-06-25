@@ -1,5 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class FaqPage extends StatefulWidget {
   const FaqPage({super.key});
@@ -16,10 +17,16 @@ class _FaqPageState extends State<FaqPage> {
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
-          leading: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-            size: 20,
+          leading: IconButton(
+            onPressed: () {
+              context.go('/');
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+              size: 20,
+            ),
+            enableFeedback: true,
           ),
           title: Text(
             'FAQ',

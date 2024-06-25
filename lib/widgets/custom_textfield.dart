@@ -17,9 +17,15 @@ class CustomTextfield extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: 30.0,
       ),
-      child: TextField(
+      child: TextFormField(
         controller: controller,
         obscureText: obscureText,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter your $hintText';
+          }
+          return null;
+        },
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(borderSide: BorderSide()),
           focusedBorder: const OutlineInputBorder(borderSide: BorderSide()),
