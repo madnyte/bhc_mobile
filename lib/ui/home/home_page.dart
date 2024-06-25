@@ -69,8 +69,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -138,36 +137,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ],
-        ),
-        bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
-          items: <Widget>[
-            FaIcon(
-              FontAwesomeIcons.house,
-              size: 25,
-              color: Theme.of(context).colorScheme.secondary,
-            ),
-            FaIcon(
-              FontAwesomeIcons.heart,
-              size: 25,
-              color: Theme.of(context).colorScheme.secondary,
-            ),
-            FaIcon(
-              FontAwesomeIcons.user,
-              size: 25,
-              color: Theme.of(context).colorScheme.secondary,
-            ),
-            FaIcon(
-              FontAwesomeIcons.gear,
-              size: 25,
-              color: Theme.of(context).colorScheme.secondary,
-            ),
-          ],
-          onTap: (index) {
-            //Handle button tap
-          },
-        ),
-      ),
-    );
+        ));
   }
 }

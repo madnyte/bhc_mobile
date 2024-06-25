@@ -11,6 +11,7 @@ dependencies:
   curved_navigation_bar: ^1.0.6
   dio: ^5.4.3+1
   equatable: ^2.0.5
+  expandable: ^5.0.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
@@ -21,6 +22,7 @@ dependencies:
   google_fonts: ^6.2.1
   loader_overlay: ^4.0.0
   searchfield: ^1.0.5
+  settings_ui: ^2.0.2
 
 dev_dependencies:
   flutter_test:
