@@ -1,5 +1,7 @@
 import 'package:bhc_mobile/ui/home/home_page.dart';
 import 'package:bhc_mobile/ui/house/house_details.dart';
+import 'package:bhc_mobile/ui/profile/faq_page.dart';
+import 'package:bhc_mobile/ui/profile/profile_page.dart';
 import 'package:bhc_mobile/ui/search/search_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +22,7 @@ class _MainPageState extends State<MainPage> {
     const HomePage(),
     const HouseDetails(),
     const SearchPage(),
-    const HomePage()
+    const FaqPage()
   ];
 
   @override

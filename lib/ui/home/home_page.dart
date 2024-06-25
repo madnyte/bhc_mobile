@@ -69,74 +69,77 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 50, left: 20),
-              child: Text(
-                "Discover",
-                style: Theme.of(context).textTheme.headlineMedium?.apply(
-                      color: Theme.of(context).colorScheme.onSecondaryContainer,
+    return SafeArea(
+      child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 50, left: 20),
+                child: Text(
+                  "Discover",
+                  style: Theme.of(context).textTheme.headlineMedium?.apply(
+                        color:
+                            Theme.of(context).colorScheme.onSecondaryContainer,
+                      ),
+                ),
+              ),
+              CustomSearchBar(focusNode: myFocusNode),
+              Container(
+                margin: const EdgeInsets.only(left: 20),
+                width: double.maxFinite,
+                height: 100,
+                child: FilterOptions(
+                  selectedFilter: filterOption,
+                  setFilter: setFilterOption,
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 20, top: 0, right: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Featured Houses",
+                      style: Theme.of(context).textTheme.labelLarge?.apply(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer,
+                          ),
                     ),
+                    const Text(
+                      "VIew all",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        height: 1.2,
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            CustomSearchBar(focusNode: myFocusNode),
-            Container(
-              margin: const EdgeInsets.only(left: 20),
-              width: double.maxFinite,
-              height: 100,
-              child: FilterOptions(
-                selectedFilter: filterOption,
-                setFilter: setFilterOption,
+              Container(
+                margin: const EdgeInsets.only(
+                  left: 20.0,
+                  right: 20.0,
+                  top: 20.0,
+                ),
+                width: double.maxFinite,
+                height: 425,
+                child: ListView.builder(
+                  itemCount: 5,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (_, int index) {
+                    return HouseCard(
+                      imageUrl: popularImages[index],
+                    );
+                  },
+                ),
               ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, top: 0, right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Featured Houses",
-                    style: Theme.of(context).textTheme.labelLarge?.apply(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSecondaryContainer,
-                        ),
-                  ),
-                  const Text(
-                    "VIew all",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      height: 1.2,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(
-                left: 20.0,
-                right: 20.0,
-                top: 20.0,
-              ),
-              width: double.maxFinite,
-              height: 425,
-              child: ListView.builder(
-                itemCount: 5,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (_, int index) {
-                  return HouseCard(
-                    imageUrl: popularImages[index],
-                  );
-                },
-              ),
-            ),
-          ],
-        ));
+            ],
+          )),
+    );
   }
 }
