@@ -1,7 +1,12 @@
+import 'dart:developer';
+
+import 'package:bhc_mobile/models/profile.dart';
+import 'package:bhc_mobile/services/authentication/auth.dart';
 import 'package:bhc_mobile/widgets/profile/profile_options.dart';
 import 'package:bhc_mobile/widgets/profile/profile_options_alt.dart';
 import 'package:bhc_mobile/widgets/profile/user_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:pocketbase/pocketbase.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -11,6 +16,9 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final isLoggedIn = auth.authStore.isValid;
+  final user = Profile.fromRecord(auth.authStore.model as RecordModel);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +42,9 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(
               height: 20,
             ),
-            const UserAvatar(
-              imagePath: 'assets/images/user.jpg',
-              name: 'Motheo Keneilwe',
+            UserAvatar(
+              imagePath: user.avatarUrl,
+              name: user.name,
               userType: 'Individual',
             ),
             const SizedBox(

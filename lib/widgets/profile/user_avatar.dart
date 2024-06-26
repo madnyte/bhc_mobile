@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class UserAvatar extends StatelessWidget {
@@ -18,7 +20,7 @@ class UserAvatar extends StatelessWidget {
         CircleAvatar(
           maxRadius: 50,
           backgroundColor: Colors.white,
-          foregroundImage: AssetImage(imagePath),
+          foregroundImage: NetworkImage(imagePath),
         ),
         const SizedBox(
           width: 20.0,
