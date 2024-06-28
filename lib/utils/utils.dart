@@ -7,7 +7,7 @@ String pbFileUrl({
   required String filename,
   required String baseUrl,
 }) {
-  return 'http://$baseUrl/api/files/$collectionIdOrName/$recordId/$filename';
+  return 'https://$baseUrl/api/files/$collectionIdOrName/$recordId/$filename';
 }
 
 extension RecordModelX on RecordModel {
