@@ -4,7 +4,7 @@ import 'package:bhc_mobile/models/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:pocketbase/pocketbase.dart';
 
-final auth = PocketBase('http://10.0.2.2:8090/');
+final auth = PocketBase('https://bhc-backend-damp-forest-976.fly.dev/');
 
 class Auth {
   static Future<bool> isLoggedIn(BuildContext context) async {

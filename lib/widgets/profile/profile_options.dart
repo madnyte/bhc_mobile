@@ -33,36 +33,40 @@ class _ProfileOptionsState extends State<ProfileOptions> {
           ],
           color: Colors.white,
         ),
-        child: const Padding(
-          padding: EdgeInsets.all(5.0),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ProfileOptionsItem(
                 leading: FontAwesomeIcons.building,
                 title: 'Properties',
+                onTap: () {},
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10.0,
               ),
               ProfileOptionsItem(
                 leading: FontAwesomeIcons.clockRotateLeft,
                 title: 'My History',
+                onTap: () {},
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10.0,
               ),
               ProfileOptionsItem(
                 leading: FontAwesomeIcons.fileInvoice,
                 title: 'My Invoices',
+                onTap: () {},
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10.0,
               ),
               ProfileOptionsItem(
                 leading: FontAwesomeIcons.flag,
                 title: 'Reports',
                 lastItem: true,
+                onTap: () {},
               )
             ],
           ),
