@@ -9,7 +9,7 @@ class HouseFeatures extends StatelessWidget {
       required this.bedrooms,
       required this.bathrooms});
 
-  final HouseTypes houseType;
+  final String houseType;
   final int bedrooms;
   final int bathrooms;
 
@@ -30,7 +30,7 @@ class HouseFeatures extends StatelessWidget {
                 width: 5.0,
               ),
               Text(
-                houseType.name,
+                houseType,
                 overflow: TextOverflow.fade,
                 style: Theme.of(context).textTheme.labelMedium?.apply(
                       color: Theme.of(context).colorScheme.secondary,

@@ -1,14 +1,15 @@
 import 'dart:developer';
 
-import 'package:bhc_mobile/utils/constants.dart';
+import 'package:bhc_mobile/models/house.dart';
 import 'package:bhc_mobile/widgets/house/house_features.dart';
 import 'package:bhc_mobile/widgets/house/house_location.dart';
 import 'package:bhc_mobile/widgets/house/house_price.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HouseCard extends StatefulWidget {
-  const HouseCard({super.key, required this.imageUrl});
-  final String imageUrl;
+  const HouseCard({super.key, required this.house});
+  final House house;
 
   @override
   State<HouseCard> createState() => _HouseCardState();
@@ -27,7 +28,7 @@ class _HouseCardState extends State<HouseCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        log("tapped");
+        context.go('/house/${widget.house.id}');
       },
       child: Stack(
         children: [
@@ -49,7 +50,7 @@ class _HouseCardState extends State<HouseCard> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20.0),
                     image: DecorationImage(
-                      image: AssetImage(widget.imageUrl),
+                      image: NetworkImage(widget.house.thumbnail),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -58,7 +59,7 @@ class _HouseCardState extends State<HouseCard> {
                   height: 10.0,
                 ),
                 Text(
-                  '3 Bed Room Commercial House',
+                  widget.house.title,
                   style: Theme.of(context).textTheme.titleMedium?.apply(
                         color:
                             Theme.of(context).colorScheme.onPrimaryFixedVariant,
@@ -68,22 +69,22 @@ class _HouseCardState extends State<HouseCard> {
                 const SizedBox(
                   height: 10.0,
                 ),
-                const HouseLocation(location: 'Borolong, Maun'),
+                HouseLocation(location: widget.house.location),
                 const SizedBox(
                   height: 10.0,
                 ),
-                const Expanded(
+                Expanded(
                   child: HouseFeatures(
-                      houseType: HouseTypes.apartment,
-                      bedrooms: 1,
-                      bathrooms: 1),
+                      houseType: widget.house.type,
+                      bedrooms: widget.house.no_of_rooms,
+                      bathrooms: widget.house.no_of_bathrooms),
                 ),
                 const SizedBox(
                   height: 20.0,
                 ),
                 HousePrice(
-                  plan: 'm',
-                  price: 3700,
+                  plan: widget.house.payment_method,
+                  price: widget.house.price,
                   isFavoured: isFavorite,
                   addToFavorite: addToFavorites,
                 )
@@ -99,7 +100,7 @@ class _HouseCardState extends State<HouseCard> {
               ),
               side: BorderSide.none,
               label: Text(
-                'New',
+                widget.house.tags,
                 style: Theme.of(context).textTheme.labelSmall?.apply(
                       color: Theme.of(context).colorScheme.onSecondaryContainer,
                     ),

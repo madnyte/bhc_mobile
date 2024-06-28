@@ -1,9 +1,14 @@
+import 'package:bhc_mobile/services/authentication/auth.dart';
 import 'package:bhc_mobile/widgets/profile/profile_options_item.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfileOptionsAlt extends StatelessWidget {
   const ProfileOptionsAlt({super.key});
+
+  void logOut() {
+    auth.authStore.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,22 +33,26 @@ class ProfileOptionsAlt extends StatelessWidget {
           ],
           color: Colors.white,
         ),
-        child: const Padding(
-          padding: EdgeInsets.all(5.0),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ProfileOptionsItem(
                 leading: FontAwesomeIcons.userPen,
                 title: 'Edit Profile',
+                onTap: () {},
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10.0,
               ),
               ProfileOptionsItem(
                 leading: FontAwesomeIcons.arrowRightFromBracket,
                 title: 'Log Out',
                 lastItem: true,
+                onTap: () {
+                  logOut();
+                },
               ),
             ],
           ),

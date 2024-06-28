@@ -1,23 +1,16 @@
-import 'dart:developer';
-
+import 'package:bhc_mobile/models/house.dart';
 import 'package:bhc_mobile/widgets/house/house_location.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class ResultsCard extends StatefulWidget {
-  const ResultsCard(
-      {super.key,
-      required this.name,
-      required this.location,
-      required this.description,
-      required this.imageUrl,
-      required this.price});
+  const ResultsCard({
+    super.key,
+    required this.house,
+  });
 
-  final String name;
-  final String location;
-  final String description;
-  final String imageUrl;
-  final double price;
+  final House house;
 
   @override
   State<ResultsCard> createState() => _ResultsCardState();
@@ -32,7 +25,7 @@ class _ResultsCardState extends State<ResultsCard> {
       ),
       child: InkWell(
         onTap: () {
-          log("tapped");
+          context.go('/house/${widget.house.id}');
         },
         customBorder: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
@@ -55,7 +48,7 @@ class _ResultsCardState extends State<ResultsCard> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
                       image: DecorationImage(
-                        image: AssetImage(widget.imageUrl),
+                        image: NetworkImage(widget.house.thumbnail),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -73,7 +66,7 @@ class _ResultsCardState extends State<ResultsCard> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15.0),
                               child: Text(
-                                widget.name,
+                                widget.house.title,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleMedium
@@ -91,7 +84,8 @@ class _ResultsCardState extends State<ResultsCard> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15.0),
-                              child: HouseLocation(location: widget.location),
+                              child: HouseLocation(
+                                  location: widget.house.location),
                             ),
                           ],
                         ),
@@ -116,7 +110,9 @@ class _ResultsCardState extends State<ResultsCard> {
               child: Chip(
                 side: BorderSide.none,
                 label: Text(
-                  'P${widget.price}/month',
+                  widget.house.payment_method == 'rent'
+                      ? 'P${widget.house.price}/month'
+                      : 'P ${widget.house.price}',
                   style: Theme.of(context).textTheme.labelLarge?.apply(
                         color:
                             Theme.of(context).colorScheme.onSecondaryContainer,

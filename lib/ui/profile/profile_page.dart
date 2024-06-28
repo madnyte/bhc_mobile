@@ -23,41 +23,47 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
-      body: Padding(
-        padding: const EdgeInsets.all(
-          20.0,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 50,
-            ),
-            Text(
-              'Profile',
-              style: Theme.of(context).textTheme.headlineLarge?.apply(
-                    color: Theme.of(context).colorScheme.onSecondaryContainer,
+      body: isLoggedIn
+          ? Padding(
+              padding: const EdgeInsets.all(
+                20.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 50,
                   ),
+                  Text(
+                    'Profile',
+                    style: Theme.of(context).textTheme.headlineLarge?.apply(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer,
+                        ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  UserAvatar(
+                    imagePath: user.avatarUrl,
+                    name: user.name,
+                    userType: 'Individual',
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  const ProfileOptionsAlt(),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  const ProfileOptions()
+                ],
+              ),
+            )
+          : const Center(
+              child: Text('Not Logged In'),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            UserAvatar(
-              imagePath: user.avatarUrl,
-              name: user.name,
-              userType: 'Individual',
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            ProfileOptionsAlt(),
-            const SizedBox(
-              height: 20.0,
-            ),
-            ProfileOptions()
-          ],
-        ),
-      ),
     );
   }
 }

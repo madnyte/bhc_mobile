@@ -18,14 +18,26 @@ extension RecordModelX on RecordModel {
         filename: data[fieldKey],
         baseUrl: Config.baseUrl);
   }
+
+  List<String> resolveImageUrls() {
+    List<dynamic> imageUrls = data['images'];
+    return imageUrls.map((item) {
+      return pbFileUrl(
+          collectionIdOrName: collectionId,
+          recordId: id,
+          filename: item,
+          baseUrl: Config.baseUrl);
+    }).toList();
+  }
 }
 
 extension RecordMapX on Map<String, dynamic> {
   String resolveFileUrl(String fieldKey) {
     return pbFileUrl(
-        collectionIdOrName: this['@collectionId'],
-        recordId: this['id'],
-        filename: this[fieldKey],
-        baseUrl: Config.baseUrl);
+      collectionIdOrName: this['@collectionId'],
+      recordId: this['id'],
+      filename: this[fieldKey],
+      baseUrl: Config.baseUrl,
+    );
   }
 }

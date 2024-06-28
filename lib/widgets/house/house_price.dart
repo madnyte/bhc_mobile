@@ -8,7 +8,7 @@ class HousePrice extends StatelessWidget {
       required this.isFavoured,
       required this.plan});
 
-  final double price;
+  final int price;
   final String plan;
   final Function() addToFavorite;
   final bool isFavoured;
@@ -20,7 +20,7 @@ class HousePrice extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          'P $price/$plan',
+          plan == 'rent' ? 'P $price/m' : 'P $price',
           style: Theme.of(context).textTheme.headlineSmall?.apply(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),

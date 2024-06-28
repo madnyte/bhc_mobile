@@ -1,3 +1,4 @@
+import 'package:bhc_mobile/ui/favorites/favorites_page.dart';
 import 'package:bhc_mobile/ui/home/home_page.dart';
 import 'package:bhc_mobile/ui/house/house_details.dart';
 import 'package:bhc_mobile/ui/profile/profile_page.dart';
@@ -20,7 +21,7 @@ class _MainPageState extends State<MainPage> {
 
   List pages = [
     const HomePage(),
-    const HouseDetails(),
+    const FavoritesPage(),
     const ProfilePage(),
     const SettingsPage()
   ];

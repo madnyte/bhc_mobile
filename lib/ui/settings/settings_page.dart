@@ -92,7 +92,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: Colors.grey,
                 ),
                 onPressed: (context) {
-                  context.go('/faq');
+                  context.go('/settings/faq');
                 },
               ),
               SettingsTile.navigation(

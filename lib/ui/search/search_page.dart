@@ -31,13 +31,13 @@ class _SearchPageState extends State<SearchPage> {
                 itemBuilder: (_, int index) {
                   return const Padding(
                     padding: EdgeInsets.symmetric(vertical: 10.0),
-                    child: ResultsCard(
-                      name: '2 bedroom',
-                      description: "description",
-                      location: 'Phase 2, Gaborone',
-                      price: 3500,
-                      imageUrl: 'assets/images/place3.jpg',
-                    ),
+                    // child: ResultsCard(
+                    //   name: '2 bedroom',
+                    //   description: "description",
+                    //   location: 'Phase 2, Gaborone',
+                    //   price: 3500,
+                    //   imageUrl: 'assets/images/place3.jpg',
+                    // ),
                   );
                 },
               ),

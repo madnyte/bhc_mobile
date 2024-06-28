@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -8,11 +6,13 @@ class ProfileOptionsItem extends StatelessWidget {
       {super.key,
       required this.leading,
       required this.title,
-      this.lastItem = false});
+      this.lastItem = false,
+      required this.onTap});
 
   final IconData leading;
   final String title;
   final bool lastItem;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,7 @@ class ProfileOptionsItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: InkWell(
-        onTap: () {
-          log("tapped");
-        },
+        onTap: onTap,
         customBorder: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HouseFeature extends StatelessWidget {
-  const HouseFeature({super.key});
+  const HouseFeature({super.key, required this.feature, required this.icon});
+
+  final String feature;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +24,8 @@ class HouseFeature extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const FaIcon(
-            FontAwesomeIcons.house,
+          FaIcon(
+            icon,
             size: 20,
             color: Colors.black54,
           ),
@@ -30,7 +33,7 @@ class HouseFeature extends StatelessWidget {
             width: 10.0,
           ),
           Text(
-            "houseType.name",
+            feature,
             overflow: TextOverflow.fade,
             style: Theme.of(context).textTheme.labelLarge?.apply(
                   color: Colors.black54,
